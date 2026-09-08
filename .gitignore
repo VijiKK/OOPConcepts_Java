@@ -1,0 +1,15 @@
+# Java compiler output
+*.class
+
+# Common Java build directories
+build/
+out/
+target/
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
