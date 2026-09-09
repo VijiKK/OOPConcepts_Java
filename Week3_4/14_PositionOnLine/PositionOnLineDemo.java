@@ -15,14 +15,19 @@ class Train {
 public class PositionOnLineDemo {
     public static void main(String[] args) {
         Train train = new Train();
-        train.move(12.5);
-        train.move(2.5);
+        // Starting from 0.0, moving 5.0 increases the stored position to 5.0.
+        train.move(5.0);
+        System.out.println("After moving forward: "
+                + train.getDistanceFromStation() + " miles");
 
-        System.out.println("Distance from station: "
+        // A negative distance changes the same field in the opposite direction.
+        train.move(-2.0);
+        System.out.println("After moving back: "
                 + train.getDistanceFromStation() + " miles");
     }
 }
 
 /* Expected output:
-Distance from station: 15.0 miles
+After moving forward: 5.0 miles
+After moving back: 3.0 miles
 */

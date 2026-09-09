@@ -12,7 +12,13 @@ class Question {
     }
 
     void addChoice(String choice) {
+        // Each call adds another String to the same ArrayList object.
         choices.add(choice);
+    }
+
+    int getChoiceCount() {
+        // size() reports how many elements the list currently contains.
+        return choices.size();
     }
 
     void display() {
@@ -32,6 +38,8 @@ public class CollectingValuesDemo {
         question.addChoice("new");
         question.addChoice("void");
         question.display();
+        // This directly answers: "If addChoice() is called three times, how many items?"
+        System.out.println("Number of choices: " + question.getChoiceCount());
     }
 }
 
@@ -40,4 +48,5 @@ Which keyword creates an object?
 1. class
 2. new
 3. void
+Number of choices: 3
 */

@@ -22,16 +22,25 @@ public class KeepingTotalDemo {
     public static void main(String[] args) {
         PurchaseTracker tracker = new PurchaseTracker();
 
-        tracker.recordPurchase(2.50);
-        tracker.recordPurchase(1.25);
-        System.out.println("Amount due: $" + tracker.getAmountDue());
+        // The same field remembers and accumulates each purchase amount.
+        tracker.recordPurchase(10.00);
+        System.out.println("After $10.00 purchase: $" + tracker.getAmountDue());
 
+        tracker.recordPurchase(5.50);
+        System.out.println("After $5.50 purchase: $" + tracker.getAmountDue());
+
+        tracker.recordPurchase(2.00);
+        System.out.println("After $2.00 purchase: $" + tracker.getAmountDue());
+
+        // clear() demonstrates that a method can reset the stored total.
         tracker.clear();
         System.out.println("After clear: $" + tracker.getAmountDue());
     }
 }
 
 /* Expected output:
-Amount due: $3.75
+After $10.00 purchase: $10.0
+After $5.50 purchase: $15.5
+After $2.00 purchase: $17.5
 After clear: $0.0
 */

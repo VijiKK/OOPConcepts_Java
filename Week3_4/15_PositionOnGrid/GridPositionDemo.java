@@ -6,7 +6,13 @@ class GridRobot {
 
     private int row;
     private int column;
-    private int direction = EAST;
+    private int direction;
+
+    GridRobot(int startingRow, int startingColumn, int startingDirection) {
+        row = startingRow;
+        column = startingColumn;
+        direction = startingDirection;
+    }
 
     void moveOneUnit() {
         // Only one coordinate changes, based on the current direction.
@@ -21,9 +27,9 @@ class GridRobot {
         }
     }
 
-    void turnRight() {
-        // Modulo returns to NORTH after WEST: (3 + 1) % 4 is 0.
-        direction = (direction + 1) % 4;
+    void turnLeft() {
+        // Adding 3 and taking remainder 4 turns EAST (1) into NORTH (0).
+        direction = (direction + 3) % 4;
     }
 
     void displayPosition() {
@@ -33,14 +39,26 @@ class GridRobot {
 
 public class GridPositionDemo {
     public static void main(String[] args) {
-        GridRobot robot = new GridRobot();
+        // Begin at the position used in the classroom question, facing East.
+        GridRobot robot = new GridRobot(2, 2, GridRobot.EAST);
+        System.out.print("Starting ");
+        robot.displayPosition();
+
+        // Moving East increases only the column: (2, 2) becomes (2, 3).
         robot.moveOneUnit();
-        robot.turnRight();
+        System.out.print("After moving East ");
+        robot.displayPosition();
+
+        // Turn from East to North; moving North decreases only the row.
+        robot.turnLeft();
         robot.moveOneUnit();
+        System.out.print("After moving North ");
         robot.displayPosition();
     }
 }
 
 /* Expected output:
-Position: (1, 1)
+Starting Position: (2, 2)
+After moving East Position: (2, 3)
+After moving North Position: (1, 3)
 */

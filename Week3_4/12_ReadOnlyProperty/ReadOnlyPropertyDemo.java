@@ -9,15 +9,16 @@ class Student {
     }
 
     int getStudentId() {
+        // Outside code can read the ID through this getter.
         return studentId;
     }
 
-    // There is deliberately no setStudentId() because identity should not change.
     String getName() {
         return name;
     }
 
     void setName(String name) {
+        // The name is a changeable property, so it has a setter.
         this.name = name;
     }
 }
@@ -25,6 +26,10 @@ class Student {
 public class ReadOnlyPropertyDemo {
     public static void main(String[] args) {
         Student student = new Student(1001, "Alice");
+        // The following line would not compile because no setStudentId() method exists:
+        // student.setStudentId(2002);
+
+        // The display name may change without changing the student's identity.
         student.setName("Alice Smith");
 
         System.out.println("ID: " + student.getStudentId());
