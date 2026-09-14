@@ -16,16 +16,27 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
+        // Defend the account's own invariant even if a caller forgets BankUtils.
+        if (amount <= 0) {
+            System.out.println("Deposit rejected: amount must be positive.");
+            return;
+        }
         balance = balance + amount;
     }
 
     public void withdraw(double amount) {
         // A withdrawal is accepted only when the account has enough money.
-        if (amount <= balance) {
+        if (amount <= 0) {
+            System.out.println("Withdrawal rejected: amount must be positive.");
+        } else if (amount <= balance) {
             balance = balance - amount;
         } else {
             System.out.println("Withdrawal rejected: insufficient balance.");
         }
+    }
+
+    public double getBalance() {
+        return balance;
     }
 
     public void displayInfo() {

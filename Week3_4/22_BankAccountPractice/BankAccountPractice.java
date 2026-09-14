@@ -16,9 +16,13 @@ public class BankAccountPractice {
         }
 
         double withdrawalAmount = 50.0;
-        if (BankUtils.isAmountValid(withdrawalAmount)) {
+        // A valid amount may still exceed the account's available balance.
+        if (BankUtils.isAmountValid(withdrawalAmount)
+                && withdrawalAmount <= alice.getBalance()) {
             alice.withdraw(withdrawalAmount);
             System.out.println("Withdrawal successful.");
+        } else {
+            System.out.println("Withdrawal not completed.");
         }
 
         // Bob's valid deposit uses the same utility check.

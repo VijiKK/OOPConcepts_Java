@@ -42,7 +42,9 @@ public class PhotoLayoutDemo {
         Photo[] photos = {
             new Photo("Photo 1", 120, 80),
             new Photo("Photo 2", 100, 60),
-            new Photo("Photo 3", 110, 70)
+            new Photo("Photo 3", 110, 70),
+            new Photo("Photo 4", 90, 50),
+            new Photo("Photo 5", 140, 40)
         };
 
         // Place the first photo at the top-left corner.
@@ -83,4 +85,6 @@ public class PhotoLayoutDemo {
 Photo 1 at (0, 0)
 Photo 2 at (130, 0)
 Photo 3 at (0, 90)
+Photo 4 at (120, 90)
+Photo 5 at (0, 170)
 */

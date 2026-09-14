@@ -23,13 +23,13 @@ Run the commands below from the `Week3_4` directory. Examples 20 and 22 use real
 | `13_ModelingDistinctStates` | State-dependent behavior | `StateDemo.java` | Methods change state, and current state changes later behavior. |
 | `14_PositionOnLine` | Position on a line | `PositionOnLineDemo.java` | Movement updates a stored distance. |
 | `15_PositionOnGrid` | Position and direction | `GridPositionDemo.java` | Direction determines which coordinate changes. |
-| `16_StaticVariable` | Static variables | `StaticVariableDemo.java` | Objects have separate fields but share one class-level counter. |
+| `16_StaticVariable` | Static variables | `StaticVariableDemo.java` | Each balance belongs to one object, but the account-number counter is shared. |
 | `17_StaticConstant` | Static constants | `StaticConstantDemo.java` | A class constant is accessed through the class name. |
-| `18_StaticMethod` | Static methods | `StaticMethodDemo.java` | A utility calculation requires no object state. |
-| `19_SolveSimplerProblemFirst` | Incremental problem solving | `PhotoLayoutDemo.java` | A layout algorithm grows from placing one item to handling rows. |
-| `20_PackagesAndImports` | Packages and imports | `PackageDemo.java` | Package declarations match folders, and imports shorten class names. |
-| `21_UnitTestingConcept` | Unit-test structure | `ManualUnitTestDemo.java` | Tests compare expected and actual results automatically. |
-| `22_BankAccountPractice` | Combined practice | `BankAccountPractice.java` | Packages, static members, validation, utility methods, and objects work together. |
+| `18_StaticMethod` | Static and instance methods | `StaticMethodDemo.java` | `Financial.percentOf()` needs no object; `account.getBalance()` reads one object's state. |
+| `19_SolveSimplerProblemFirst` | Incremental problem solving | `LayoutStepsDemo.java`, then `PhotoLayoutDemo.java` | Build one placement, add a gap, generate names in a loop, then wrap to a new row. |
+| `20_PackagesAndImports` | Packages and imports | `PackageDemo.java`, then `PackageNamesDemo.java` | Imports shorten names; package paths organize classes and prevent name conflicts. |
+| `21_UnitTestingConcept` | Unit-test structure | `ManualUnitTestDemo.java`, then `PurchaseTotalTest.java` | A companion test class arranges inputs, runs behavior, and compares expected with actual results. |
+| `22_BankAccountPractice` | Combined practice | `BankAccountPractice.java`, then `InvalidTransactionsDemo.java` | Packages, static members, utility validation, and account-level safeguards work together. |
 
 ## Compile and run
 
@@ -199,6 +199,8 @@ cd ..
 
 ```powershell
 cd 19_SolveSimplerProblemFirst
+javac LayoutStepsDemo.java
+java LayoutStepsDemo
 javac PhotoLayoutDemo.java
 java PhotoLayoutDemo
 cd ..
@@ -206,10 +208,18 @@ cd ..
 
 ### 20 Packages and imports
 
+In `school/Student.java`, the `package` declaration comes first. In the
+demo files, `import` statements come before the class. A file with no
+`package` declaration is in the default package. `PackageNamesDemo` also
+shows that `java.util.Timer` and `javax.swing.Timer` have the same simple
+name but different full names.
+
 ```powershell
 cd 20_PackagesAndImports
 javac -d . school\Student.java PackageDemo.java
 java PackageDemo
+javac -d . edu\utc\cpsc5002\Course.java PackageNamesDemo.java
+java PackageNamesDemo
 cd ..
 ```
 
@@ -219,10 +229,16 @@ cd ..
 cd 21_UnitTestingConcept
 javac ManualUnitTestDemo.java
 java ManualUnitTestDemo
+javac PurchaseTotal.java PurchaseTotalTest.java
+java PurchaseTotalTest
 cd ..
 ```
 
 This example demonstrates the expected-versus-actual testing pattern without external libraries. JUnit uses annotations and test runners to automate the same core idea.
+`PurchaseTotalTest.java` is the companion test for `PurchaseTotal.java`.
+The equivalent JUnit shape is `@Test` on a test method followed by an
+assertion such as `Assert.assertEquals(expected, actual, tolerance)`;
+running that exact syntax would require adding the JUnit library.
 
 ### 22 Combined Bank Account practice
 
@@ -230,6 +246,8 @@ This example demonstrates the expected-versus-actual testing pattern without ext
 cd 22_BankAccountPractice
 javac -d . bank\BankAccount.java bank\utils\BankUtils.java BankAccountPractice.java
 java BankAccountPractice
+javac -d . bank\BankAccount.java bank\utils\BankUtils.java InvalidTransactionsDemo.java
+java InvalidTransactionsDemo
 cd ..
 ```
 
