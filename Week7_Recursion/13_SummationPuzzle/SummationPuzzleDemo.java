@@ -5,11 +5,12 @@ import java.util.List;
  * CONCEPT: Apply multiple recursion to a small summation puzzle.
  *
  * For cbb + ba = abc, a, b, and c must use 7, 8, and 9 exactly once.
- * Backtracking enumerates digit assignments and tests each complete arrangement.
+ * This is the textbook PuzzleSolve pattern: S is the partial assignment and U
+ * is the set of unused choices. Backtracking enumerates every assignment.
  */
 public class SummationPuzzleDemo {
 
-    static void solve(List<Integer> unused, List<Integer> assignment) {
+    static void puzzleSolve(List<Integer> unused, List<Integer> assignment) {
         if (unused.isEmpty()) {
             int a = assignment.get(0);
             int b = assignment.get(1);
@@ -29,7 +30,7 @@ public class SummationPuzzleDemo {
             int chosen = unused.remove(i); // Choose a digit for the next letter.
             assignment.add(chosen);
 
-            solve(unused, assignment); // Explore all assignments below this choice.
+            puzzleSolve(unused, assignment); // Explore below this choice recursively.
 
             assignment.remove(assignment.size() - 1); // Undo letter assignment.
             unused.add(i, chosen);                     // Restore available digit.
@@ -39,7 +40,8 @@ public class SummationPuzzleDemo {
     public static void main(String[] args) {
         List<Integer> digits = new ArrayList<>(List.of(7, 8, 9));
 
-        solve(digits, new ArrayList<>());
+        // assignment corresponds to textbook sequence S; digits corresponds to set U.
+        puzzleSolve(digits, new ArrayList<>());
         System.out.println("Backtracking tested all 3! assignments.");
     }
 }

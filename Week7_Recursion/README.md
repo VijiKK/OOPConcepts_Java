@@ -25,7 +25,7 @@ java FactorialTraceDemo
 | `10_BinarySum` | Binary recursion with `O(n)` total work |
 | `11_FibonacciComparison` | Repeated subproblems and exponential growth |
 | `12_BacktrackingPermutations` | Choose, recurse, undo, and try again |
-| `13_SummationPuzzle` | Textbook puzzle solved through backtracking |
+| `13_SummationPuzzle` | Textbook `PuzzleSolve` pattern applied through backtracking |
 | `14_CommonRecursionMistakes` | Missing base cases and failure to make progress |
 
 ## Central reminders
